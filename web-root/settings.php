@@ -5,7 +5,7 @@ session_start();
 //Prepare SQL Connection
 $servername = "hof-db";
 $username = "php";
-$password = "m2goU5kjR8btTZxI";
+$password = "devPassword";
 $dbname = "hof-db";
 
 // Create connection
