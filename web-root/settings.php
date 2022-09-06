@@ -6,7 +6,7 @@ session_start();
 $servername = "hof-db";
 $username = "php";
 $password = "m2goU5kjR8btTZxI";
-$dbname = "hof-db";
+$dbname = "hof";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
