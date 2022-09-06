@@ -68,7 +68,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 ?>
 <html>
 	<head>
-		<title>Hall of Fame - <?php echo $cont_title;?></title>
+		<title>Gladecraft Spoon - <?php echo $cont_title;?></title>
 		<link rel="stylesheet" href="style.css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 		<style>
