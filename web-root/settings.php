@@ -3,10 +3,10 @@
 session_start();
 
 //Prepare SQL Connection
-$servername = "localhost";
+$servername = "hof-db";
 $username = "php";
 $password = "m2goU5kjR8btTZxI";
-$dbname = "demo_hof";
+$dbname = "hof-db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
