@@ -122,6 +122,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			<?php
 			//render all containers
 			$i = 0;
+			var_dump($record_array);
 			for ($i = 0; $i < count($record_array); $i++) {
 				$row = $record_array[$i];
 					echo '<a href="index.php?page=1&container=' . $row['lng_id'] . '&sort_by=' . $_GET['sort_by'] . '">
