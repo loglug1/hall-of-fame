@@ -135,7 +135,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			<?php
 			//render all records after containers
 			for ($i = 0; $i < count($records_array); $i++) {
-				$row = $record_array[$i];
+				$row = $records_array[$i];
 				var_dump($row);
 					echo '<a href="record.php?id=' . $row['lng_id'] . '&page=' . $page_num . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="record">
