@@ -4,7 +4,7 @@
 require_once 'settings.php';
 
 //when sort method is not set
-if (!isset($_GET['sort_by'])) 
+if (!isset($_GET['sort_by'])) {
 	$_GET['sort_by'] = 'str_name';
 }
 
