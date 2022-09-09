@@ -40,7 +40,7 @@ $not_home = ($cont_parent != "-1");
 	$sql = "SELECT * FROM tbl_records WHERE lng_container_id = " . $cont_id . " ORDER BY str_name LIMIT " . $offset_records . ", 10;";
 	$records = $conn->query($sql);
 	
-	//$records_array = [];
+	$records_array = [];
 	
 	if ($_GET['sort_by'] == 'str_name') {
 		while ($row = $records->fetch_assoc()) {$records_array[] = $row;}
