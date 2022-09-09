@@ -20,6 +20,10 @@ $record = $conn->query($sql)->fetch_assoc();
 $sql = "SELECT * FROM tbl_containers WHERE lng_id = " . $record['lng_container_id'] . ";";
 $container = $conn->query($sql)->fetch_assoc();
 
+//match author id in record to username in users table
+$sql = "SELECT * FROM tbl_users WHERE lng_id = " . $record['lng_author_id'] . ";";
+$author = $conn->query($sql)->fetch_assoc()['str_username'];
+
 $record_name = $record['str_name'];
 
 //checks if the container is homepage
@@ -57,7 +61,8 @@ $conn->close();
 		<main id="record_main">
 			<div id="left">
 				<img id="pic" src="<?php if ($record['str_pic'] != "") {echo $record['str_pic'];} else {echo 'placeholder.png';} ?>" alt="<?php echo $record_name; ?>">
-				<h2 id="year">Coords: <?php echo $record['int_x'] . ", " . $record['int_y'] . ", " . $record['int_z']; ?></h2>
+				<h2 id="coords">Coords: <?php echo $record['int_x'] . ", " . $record['int_y'] . ", " . $record['int_z']; ?></h2>
+				<h3 id="author">Author: <?php echo $author; ?></h3>
 			</div>
 			<div id="right">
 				<h2 class="description desc_title">Description:</h2>
