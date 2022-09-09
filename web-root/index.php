@@ -40,7 +40,7 @@ $not_home = ($cont_parent != "-1");
 	$sql = "SELECT * FROM tbl_records WHERE lng_container_id = " . $cont_id . " ORDER BY str_name LIMIT " . $offset_records . ", 10;";
 	$records = $conn->query($sql);
 	
-	$records_array = [];
+	//$records_array = [];
 	
 	if ($_GET['sort_by'] == 'str_name') {
 		while ($row = $records->fetch_assoc()) {$records_array[] = $row;}
@@ -122,8 +122,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			<?php
 			//render all containers
 			$i = 0;
-			var_dump($record_array);
-			for ($i = 0; $i < count($record_array); $i++) {
+			for ($i = 0; $i < count($records_array); $i++) {
 				$row = $record_array[$i];
 					echo '<a href="index.php?page=1&container=' . $row['lng_id'] . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="container">
