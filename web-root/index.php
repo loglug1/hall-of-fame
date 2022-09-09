@@ -122,8 +122,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			<?php
 			//render all containers
 			$i = 0;
-			for ($i = 0; $i < count($records_array); $i++) {
-				$row = $record_array[$i];
+			while ($row = $containers->fetch_assoc()) {
 					echo '<a href="index.php?page=1&container=' . $row['lng_id'] . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="container">
 										<h2>' . $row['str_name'] . '</h2>
@@ -135,7 +134,8 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 		<div class="record-container">
 			<?php
 			//render all records after containers
-			while ($row = $records->fetch_assoc()) {
+			for ($i = 0; $i < count($records_array); $i++) {
+				$row = $record_array[$i];
 					echo '<a href="record.php?id=' . $row['lng_id'] . '&page=' . $page_num . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="record">
 										<h2>' . $row['str_name'] . '</h2>
