@@ -44,9 +44,9 @@ $not_home = ($cont_parent != "-1");
 		while ($row = $records->fetch_assoc()) {$records_array[] = $row;}
 	} else if ($_GET['sort_by'] == 'distance') {
 		if (isset($_GET['sort_x']&&)isset($_GET['sort_y'])&&isset($_GET['sort_z'])) {
-			$x1 = $_GET['sort_x'];
-			$y1 = $_GET['sort_y'];
-			$z1 = $_GET['sort_z'];
+			$x1 = (int)$_GET['sort_x'];
+			$y1 = (int)$_GET['sort_y'];
+			$z1 = (int)$_GET['sort_z'];
 		} else {
 			$x1 = 0;
 			$y1 = 0;
