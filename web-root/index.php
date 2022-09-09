@@ -4,7 +4,7 @@
 require_once 'settings.php';
 
 //when sort method is not set
-if (!isset($_GET['sort_by'])) {
+if (!isset($_GET['sort_by'])) 
 	$_GET['sort_by'] = 'str_name';
 }
 
@@ -37,8 +37,36 @@ $not_home = ($cont_parent != "-1");
 
 //pull all of the objects in current container
 
-	$sql = "SELECT * FROM tbl_records WHERE lng_container_id = " . $cont_id . " ORDER BY " . $_GET['sort_by'] . " LIMIT " . $offset_records . ", 10;";
+	$sql = "SELECT * FROM tbl_records WHERE lng_container_id = " . $cont_id . " ORDER BY str_name LIMIT " . $offset_records . ", 10;";
 	$records = $conn->query($sql);
+	
+	if ($_GET['sort_by'] == 'str_name') {
+		while ($row = $records->fetch_assoc()) {$records_array[] = $row;}
+	} else if ($_GET['sort_by'] == 'distance') {
+		if (isset($_GET['sort_x']&&)isset($_GET['sort_y'])&&isset($_GET['sort_z'])) {
+			$x1 = $_GET['sort_x'];
+			$y1 = $_GET['sort_y'];
+			$z1 = $_GET['sort_z'];
+		} else {
+			$x1 = 0;
+			$y1 = 0;
+			$z1 = 0;
+		}
+		while ($row = $records->fetch_assoc()) {
+			$x2 = $row['int_x'];
+			$y2 = $row['int_y'];
+			$z2 = $row['int_z'];
+			$row['distance_from_given'] = sqrt(pow(($x2-$x1),2) + pow(($y2-$y1),2) + pow(($z2-$z1),2));
+			$records_array[] = $row;
+		}
+	function cmp($a, $b){
+		if($a['distance_from_given'] == $b['distance_from_given']){
+			return 0;
+		}
+		return ($a['distance_from_given'] < $b['distance_from_given']) ? -1 : 1;
+	}
+	usort($records_array, "cmp");
+	}
 
 	$sql = "SELECT * FROM tbl_containers WHERE int_parent = " . $cont_id . " ORDER BY str_name LIMIT " . $offset_containers . ", 4;";
 	$containers = $conn->query($sql);
@@ -91,7 +119,9 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 		<div class="container-container">
 			<?php
 			//render all containers
-			while ($row = $containers->fetch_assoc()) {
+			$i = 0;
+			for ($i = 0; $i < count($record_array); $i++) {
+				$row = $record_array[$i];
 					echo '<a href="index.php?page=1&container=' . $row['lng_id'] . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="container">
 										<h2>' . $row['str_name'] . '</h2>
@@ -120,6 +150,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 				<div id="sort_by">
 					<h2>Sort by:</h2>
 					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'str_first') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=str_name">Name</a>
+					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'distance') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=distance">Location</a>
 				</div>
 				<div id="pages">
 					<?php
