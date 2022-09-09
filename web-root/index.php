@@ -43,7 +43,7 @@ $not_home = ($cont_parent != "-1");
 	if ($_GET['sort_by'] == 'str_name') {
 		while ($row = $records->fetch_assoc()) {$records_array[] = $row;}
 	} else if ($_GET['sort_by'] == 'distance') {
-		if (isset($_GET['sort_x']&&)isset($_GET['sort_y'])&&isset($_GET['sort_z'])) {
+		if (isset($_GET['sort_x'])&&isset($_GET['sort_y'])&&isset($_GET['sort_z'])) {
 			$x1 = (int)$_GET['sort_x'];
 			$y1 = (int)$_GET['sort_y'];
 			$z1 = (int)$_GET['sort_z'];
