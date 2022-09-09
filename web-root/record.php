@@ -20,7 +20,7 @@ $record = $conn->query($sql)->fetch_assoc();
 $sql = "SELECT * FROM tbl_containers WHERE lng_id = " . $record['lng_container_id'] . ";";
 $container = $conn->query($sql)->fetch_assoc();
 
-$record_name = $record['str_first'] . ' ' . $record['str_last'];
+$record_name = $record['str_name'];
 
 //checks if the container is homepage
 $sql = "SELECT * FROM tbl_containers WHERE lng_id = " . $record['lng_container_id'] . ";";
@@ -57,7 +57,7 @@ $conn->close();
 		<main id="record_main">
 			<div id="left">
 				<img id="pic" src="<?php if ($record['str_pic'] != "") {echo $record['str_pic'];} else {echo 'placeholder.png';} ?>" alt="<?php echo $record_name; ?>">
-				<h2 id="year">Year: <?php echo $record['str_year']; ?></h2>
+				<h2 id="year">Coords: <?php echo $record['int_x'] . ", " . $record['int_y'] . ", " $record['int_z']; ?></h2>
 			</div>
 			<div id="right">
 				<h2 class="description desc_title">Description:</h2>
