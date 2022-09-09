@@ -5,7 +5,7 @@ require_once 'settings.php';
 
 //when sort method is not set
 if (!isset($_GET['sort_by'])) {
-	$_GET['sort_by'] = 'str_last';
+	$_GET['sort_by'] = 'str_name';
 }
 
 //check page number
@@ -106,9 +106,9 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			while ($row = $records->fetch_assoc()) {
 					echo '<a href="record.php?id=' . $row['lng_id'] . '&page=' . $page_num . '&sort_by=' . $_GET['sort_by'] . '">
 									<div class="record">
-										<h2>' . $row['str_first'] . ' ' . $row['str_last'] . '</h2>
-										<img class="icon" src="' . $row['str_pic'] . '" alt="' . $row['str_first'] . ' ' . $row['str_last'] . '">
-										<p class="year">Year: ' . $row['str_year'] . '</p>
+										<h2>' . $row['str_name'] . '</h2>
+										<img class="icon" src="' . $row['str_pic'] . '" alt="' . $row['str_name'] . '">
+										<p class="coords">Coords: ' . $row['int_x'] . ', ' . $row['int_y'] . ', ' . $row['int_z'] . '</p>
 									</div>
 								</a>';
 			}
@@ -119,9 +119,7 @@ $back = '<p id="back_button" class="top-nav"><a href="index.php?container=' . $c
 			<nav>
 				<div id="sort_by">
 					<h2>Sort by:</h2>
-					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'str_first') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=str_first">First</a>
-					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'str_last') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=str_last">Last</a>
-					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'str_year') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=str_year">Year</a>
+					<a class="selector<?php if (isset($_GET['sort_by'])) {if ($_GET['sort_by'] == 'str_first') {echo ' selected';}}?>" href="index.php?page=<?php echo $page_num;?>&container=<?php echo $cont_id;?>&sort_by=str_name">Name</a>
 				</div>
 				<div id="pages">
 					<?php

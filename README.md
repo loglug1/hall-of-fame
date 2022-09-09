@@ -1,6 +1,4 @@
-# FCHS Hall of Fame
-Hall of Fame made for Freeburg High School
+# Gladecraft Maps
+This is meant to be a location database for Minecraft servers.
 
-This was a small project that I made that is basically a database for award receivers meant to be used on a touch kiosk.
-
-This version of the repository is untouched from the original version from 2019.
+The code was originally created for a Hall of Fame sort of kiosk, but has been heavily modified to be suited for Minecraft locations.

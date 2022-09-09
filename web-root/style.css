@@ -125,7 +125,7 @@ footer nav * {
 	display: grid;
 	grid-template-columns: 45% 55%;
 }
-.year {
+.coords {
 	font-size: 1.3vw;
 	margin: 5px 0;
 }
