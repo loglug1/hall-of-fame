@@ -57,7 +57,7 @@ $conn->close();
 		<main id="record_main">
 			<div id="left">
 				<img id="pic" src="<?php if ($record['str_pic'] != "") {echo $record['str_pic'];} else {echo 'placeholder.png';} ?>" alt="<?php echo $record_name; ?>">
-				<h2 id="year">Coords: <?php echo "" . $record['int_x'] . ", " . $record['int_y'] . ", " $record['int_z']; ?></h2>
+				<h2 id="year">Coords: <?php echo $record['int_x'] . ", " . $record['int_y'] . ", " . $record['int_z']; ?></h2>
 			</div>
 			<div id="right">
 				<h2 class="description desc_title">Description:</h2>
